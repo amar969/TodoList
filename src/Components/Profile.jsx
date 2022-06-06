@@ -22,7 +22,7 @@ export const Profile = () => {
             setStyles({
                 display:"none"
             })
-            setBtnText("Hide More Details")
+            setBtnText("Show More Details")
         }
         else{
             setStyles({
@@ -30,7 +30,7 @@ export const Profile = () => {
                 flexDirection: "column"
 
             })
-            setBtnText("Show More Details")
+            setBtnText("Hide More Details")
         }
     }
     

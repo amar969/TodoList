@@ -1,4 +1,5 @@
 import React from "react";
+import { InputTask } from "./InputTask";
 
 export const Todo = () => {
   const data = [
@@ -21,6 +22,7 @@ export const Todo = () => {
             </ul>
           );
         })}
+        <InputTask /> 
       </div>
     </>
   );
