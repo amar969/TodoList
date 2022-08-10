@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
+import {Link} from "react-router-dom";
 
 export const Navbar = () => {
+    
     return(
         <>
-        <div className='navbar-container'>
-            <h2>Navbar</h2>
-        </div>
+        <nav>
+            <Link to="/" >Login</Link>
+            <Link to="./Home" >Home</Link>
+        </nav>
         </>
     )
 }

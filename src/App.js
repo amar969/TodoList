@@ -1,20 +1,20 @@
 import './App.css';
-import { Navbar } from './Components/Navbar';
-import { Profile } from './Components/Profile';
-import { Todo } from './Components/Todo';
+import {Login} from "./Components/Login";
+import { Routes, Route} from "react-router-dom";
+import {Home} from "./Components/Home";
+
 
 function App() {
+
+  
+
   return (
     <div className="App">
-      <Navbar /> 
-      <div id="wrapper">
-      
-      <Profile />
-      <Todo />
+        <Routes>
+          <Route path="/" element={< Login />} />
+          <Route path="/Home" element={<Home />} />
+        </Routes>
       </div>
-
-      
-    </div>
   );
 }
 
