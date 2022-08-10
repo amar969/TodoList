@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, Box, VStack, StackDivider  } from "@chakra-ui/react";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux"
 import { getProfile, logout } from "../Redux/action.js";
 
@@ -24,7 +24,7 @@ export const Sidebar = () => {
   let profile = useSelector((state) => state.profile)
   console.log(profile.data)
  
-
+  let sidebarItems = ["All", "Offical", "Personal", "Other"]
 
   return (
     <>
@@ -51,18 +51,29 @@ export const Sidebar = () => {
             sx={{ marginTop:"100px" }}
             
           >
-            <Box   sx={{ display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center" }} h="40px" bg="yellow">
+            <Link to="/Summary/All">
+            <Box sx={{ display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center" }} h="40px" bg="yellow" >
               All
             </Box>
-            <Box  sx={{ display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center" }} h="40px" bg="tomato">
+            </Link>
+            
+            <Link to="/Summary/Offical">
+            <Box onClick={(e) => console.log(e.target.textContent)}  sx={{ display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center" }} h="40px" bg="tomato">
               Offical
             </Box>
-            <Box  sx={{ display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center" }} h="40px" bg="skyblue">
+            </Link>
+
+            <Link to="/Summary/Personal">
+            <Box onClick={(e) => console.log(e.target.textContent)} sx={{ display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center" }} h="40px" bg="skyblue">
               Personal
             </Box>
-            <Box  sx={{ display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center" }} h="40px" bg="grey">
+            </Link>
+
+            <Link to="/Summary/Other">
+            <Box onClick={(e) => console.log(e.target.textContent)} sx={{ display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center" }} h="40px" bg="grey">
               Other
             </Box>
+            </Link>
           </VStack>
         </Box>
 

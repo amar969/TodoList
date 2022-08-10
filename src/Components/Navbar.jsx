@@ -6,8 +6,8 @@ export const Navbar = () => {
     return(
         <>
         <nav>
-            <Link to="/" >Login</Link>
-            <Link to="./Home" >Home</Link>
+            <Link to="/Summary:tag"></Link>
+            <Link to="/Home" >Home</Link>
         </nav>
         </>
     )
