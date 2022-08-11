@@ -12,7 +12,6 @@ export const CreateTodo = () => {
   return (
     <>
     <Form />
-    <Summary/>
     </>
   )
 }

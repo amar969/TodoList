@@ -3,9 +3,9 @@ import {Login} from "./Components/Login";
 import { Routes, Route} from "react-router-dom";
 import {Home} from "./Components/Home";
 import { Summary } from './Components/Summary';
-import Personal from './Components/Personal';
-import Other from './Components/Other';
-import Offical from './Components/Offical';
+import {Personal} from './Components/Personal';
+import {Other} from './Components/Other';
+import {Offical} from './Components/Offical';
 
 
 function App() {

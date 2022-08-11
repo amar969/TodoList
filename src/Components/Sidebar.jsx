@@ -77,7 +77,24 @@ export const Sidebar = () => {
           </VStack>
         </Box>
 
-        <Box>
+        <Box sx={{ display: "flex", flexDirection:"column", alignItems:"center" }} >
+          <Link to="/Home">
+          <button
+           style={{
+            backgroundColor: "grey",
+            color: "white",
+            fontWeight: "bold",
+            border: "none",
+            borderRadius: "20px",
+            marginTop:"200px",
+            width:"150px",
+            fontSize:"18px"
+          }}
+            >
+            Create a Task
+          </button>
+          </Link>
+
           <button
             style={{
               backgroundColor: "teal",
@@ -85,7 +102,6 @@ export const Sidebar = () => {
               fontWeight: "bold",
               border: "none",
               borderRadius: "20px",
-              marginTop:"250px",
               width:"100px",
               fontSize:"18px"
             }}

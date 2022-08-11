@@ -53,7 +53,7 @@ export const getProfile = () => async(dispatch) => {
 export const getInProgress = () => async(dispatch) => {
     try {
         dispatch(getProfileLoading())
-        let res = await fetch("https://bath-bomb-testing-server.herokuapp.com/users?todo_status=In Progress")
+        let res = await fetch("https://notes-json-server-44.herokuapp.com/notes?todo_status=In Progress&todo_cate=Personal")
         let data = await res.json()
         console.log(data)
         dispatch(inProgress(data.length))
@@ -65,7 +65,7 @@ export const getInProgress = () => async(dispatch) => {
 export const getTodo = () => async(dispatch) => {
     try {
         dispatch(getProfileLoading())
-        let res = await fetch("https://bath-bomb-testing-server.herokuapp.com/users?todo_status=Todo")
+        let res = await fetch("https://notes-json-server-44.herokuapp.com/notes?todo_status=Todo&todo_cate=Personal")
         let data = await res.json()
         console.log(data)
         dispatch(todos(data.length))
@@ -77,7 +77,19 @@ export const getTodo = () => async(dispatch) => {
 export const getdone = () => async(dispatch) => {
     try {
         dispatch(getProfileLoading())
-        let res = await fetch("https://bath-bomb-testing-server.herokuapp.com/users?todo_status=Done")
+        let res = await fetch("https://notes-json-server-44.herokuapp.com/notes?todo_status=Done&todo_cate=Personal")
+        let data = await res.json()
+        console.log(data)
+        dispatch(dones(data.length))
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getInProgressPersonal = () => async(dispatch) => {
+    try {
+        dispatch(getProfileLoading())
+        let res = await fetch("https://notes-json-server-44.herokuapp.com/notes?todo_status=In Progress&todo_cate=Personal")
         let data = await res.json()
         console.log(data)
         dispatch(dones(data.length))
