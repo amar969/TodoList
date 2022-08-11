@@ -9,6 +9,7 @@ export const Summary = () => {
 
   let [todo, setTodo] = React.useState([]);
   let [inProgress, setInProgress] = React.useState([]);
+  let [done, setDone] = React.useState([])
 
   const getTodoData = async () => {
     let res = await fetch(
@@ -28,9 +29,20 @@ export const Summary = () => {
     setInProgress(data);
   };
 
+
+  const getDoneData = async () => {
+    let res = await fetch(
+      "https://notes-json-server-44.herokuapp.com/notes?todo_status=Done"
+    );
+    let data = await res.json();
+    console.log(data);
+    setDone(data);
+  };
+
   React.useEffect(() => {
     getTodoData();
     getProgressData();
+    getDoneData()
   }, []);
 
   return (
@@ -40,6 +52,7 @@ export const Summary = () => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
+          marginTop:'20px',
         }}
       >
         <Box
@@ -61,13 +74,15 @@ export const Summary = () => {
             alignItems: "flex-start",
             marginTop: "50px",
             marginLeft: "50px",
+            
           }}
         >
             <Box sx={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap: "20px", width:"95%" }} >
-            <Box sx={{  border: "2px solid black", borderTop:"none" }}>
+            <Box sx={{  border: "2px solid black", borderTop:"none"}}>
             <Box sx={{ border: "3px solid black" , bgColor: "#54BAB9", color: "white", fontWeight:"bold", padding: "10px" }}>
               TODO
             </Box>
+            <Box sx={{ overflow:'scroll', height:"600px" }} >
             {todo.map((item) => {
               return (
                 <>
@@ -77,15 +92,16 @@ export const Summary = () => {
                       <div style={{  padding:"3px 5px", borderRadius:"15px", fontSize: "13px", fontWeight:"bold", backgroundColor:"#99A799", color:"white" }} >{item.todo_cate}</div>
                       <div>{item.date}</div>
                     </div>
-                    <p style={{ margin:'10px 0' }} >{item.description}</p>
+                    <p style={{ margin:'10px 0', textAlign:"left" }} >{item.description}</p>
                     <Box>
-                        <input type="checkbox" name="" id="" /> Subtask - 1
+                        <input type="checkbox" name="" id="" /> {item.subtask}
                         
                         </Box>
                   </Box>
                 </>
               );
             })}
+            </Box>
           </Box>
 
           <Box sx={{  border: "2px solid black", borderTop:"none" }}>
@@ -100,9 +116,9 @@ export const Summary = () => {
                     <div style={{ display:"flex", justifyContent:"space-between", margin:"10px 0" }} >
                     <div style={{  padding:"3px 5px", borderRadius:"15px", fontSize: "13px", fontWeight:"bold", backgroundColor:"#94D0CC", color:"white" }} >{item.todo_cate}</div>                      <div>{item.date}</div>
                     </div>
-                    <p style={{ margin:'10px 0' }} >{item.description}</p>
+                    <p style={{ margin:'10px 0', textAlign:"left" }} >{item.description}</p>
                     <Box>
-                        <input type="checkbox" name="" id="" /> Subtask - 1
+                        <input type="checkbox" name="" id="" /> {item.subtask}
                         
                         </Box>
                   </Box>
@@ -113,9 +129,9 @@ export const Summary = () => {
 
           <Box sx={{  border: "2px solid black", borderTop:"none" }}>
             <Box sx={{ border: "3px solid black" , bgColor: "#726A95", color: "white", padding: "10px", fontWeight:"bold" }}>
-              TODO
+              DONE
             </Box>
-            {todo.map((item) => {
+            {done.map((item) => {
               return (
                 <>
                   <Box sx={{ border: "1px solid black", margin:"10px", padding: "20px", display:"flex", flexDirection:"column", alignItems:"flex-start" }}>
@@ -123,11 +139,10 @@ export const Summary = () => {
                     <div style={{ display:"flex", justifyContent:"space-between", margin:"10px 0" }} >
                     <div style={{  padding:"3px 5px", borderRadius:"15px", fontSize: "13px", fontWeight:"bold", backgroundColor:"#709FB0", color:"white" }} >{item.todo_cate}</div>                      
                     <div>{item.date}</div>
-                      <div>{item.date}</div>
                     </div>
-                    <p style={{ margin:'10px 0' }} >{item.description}</p>
+                    <p style={{ margin:'10px 0', textAlign:"left" }} >{item.description}</p>
                     <Box>
-                        <input type="checkbox" name="" id="" /> Subtask - 1
+                        <input type="checkbox" name="" id="" /> {item.subtask}
                         
                         </Box>
                   </Box>

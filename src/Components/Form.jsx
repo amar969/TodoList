@@ -6,12 +6,14 @@ let initialState = {
     description: "", 
     date: "", 
     todo_status: "", 
-    todo_cate: ""
+    todo_cate: "",
+    subtask: []
 }
 
 export const Form = () => {
   
     const [data, setData] = React.useState(initialState)
+    const [task, setTask] = React.useState([])
     
     const handleChange = (e) => {
         let {name, value, type} = e.target 
@@ -21,12 +23,11 @@ export const Form = () => {
 
     
 
-    let {title, description, date, todo_status, todo_cate} = data
+    let {title, description, date, todo_status, todo_cate, subtask} = data
 
     
 
     const getData = async() => {
-        console.log(data)
         try {
             let res = await fetch("https://notes-json-server-44.herokuapp.com/notes",{
                 method: "POST",
@@ -37,6 +38,7 @@ export const Form = () => {
         })
         let data1 = await res.json()
         console.log(data1)
+        alert("Task created")
             
         } catch (error) {
             console.log(error)    
@@ -62,6 +64,7 @@ return (
         <div className='create_task_container'>
         <div className='inputbox_container'>
            <input type="text" value={title} name="title" onChange={handleChange} placeholder="Enter title" /> 
+           <input type="text" placeholder='Enter the subtask' value={subtask} name="subtask" onChange={handleChange} />
             <textarea type="text" value={description} name="description" onChange={handleChange} placeholder="Enter Description"/> 
         </div>
         
@@ -85,11 +88,14 @@ return (
             <div><input type="checkbox" value="Offical" name="todo_cate" onChange={handleChange} /> Offical  </div>
             <div><input type="checkbox" value="Personal" name="todo_cate" onChange={handleChange}/> Personal </div>
             <div><input type="checkbox" value="Other" name="todo_cate" onChange={handleChange}/> Other</div>
-
         </div>
 
-
+           
+            
+             
     </form>
+   
+        
     </>
 
   )

@@ -51,26 +51,26 @@ export const Sidebar = () => {
             sx={{ marginTop:"100px" }}
             
           >
-            <Link to="/Summary/All">
-            <Box sx={{ display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center" }} h="40px" bg="yellow" >
+            <Link to="/Summary/All" style={{ color: "white", fontWeight:"bold", textDecoration:"none" }}>
+            <Box sx={{ display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center", borderRadius:"10px" }} h="40px" bg="skyblue" >
               All
             </Box>
             </Link>
             
-            <Link to="/Summary/Offical">
-            <Box onClick={(e) => console.log(e.target.textContent)}  sx={{ display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center" }} h="40px" bg="tomato">
+            <Link to="/Summary/Offical" style={{color: "white", fontWeight:"bold", textDecoration:"none"  }} >
+            <Box sx={{ display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center", borderRadius:"10px" }} h="40px" bg="lightgreen">
               Offical
             </Box>
             </Link>
 
-            <Link to="/Summary/Personal">
-            <Box onClick={(e) => console.log(e.target.textContent)} sx={{ display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center" }} h="40px" bg="skyblue">
+            <Link to="/Summary/Personal" style={{color: "white", fontWeight:"bold", textDecoration:"none"  }}>
+            <Box sx={{ display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center", borderRadius:"10px" }} h="40px" bg="#726A95">
               Personal
             </Box>
             </Link>
 
-            <Link to="/Summary/Other">
-            <Box onClick={(e) => console.log(e.target.textContent)} sx={{ display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center" }} h="40px" bg="grey">
+            <Link to="/Summary/Other" style={{color: "white", fontWeight:"bold", textDecoration:"none"  }} >
+            <Box sx={{ display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center", borderRadius:"10px" }} h="40px" bg="orange">
               Other
             </Box>
             </Link>
