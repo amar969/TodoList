@@ -1,49 +1,28 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getdone, getInProgress, getTodo } from "../Redux/action";
+import { getdone, getInProgress, getTodo, getTodoData, getDoneData } from "../Redux/action";
 import { Box } from "@chakra-ui/react";
 import { Sidebar } from "./Sidebar";
 
 export const Summary = () => {
   let dispatch = useDispatch();
 
-  let [todo, setTodo] = React.useState([]);
-  let [inProgress, setInProgress] = React.useState([]);
-  let [done, setDone] = React.useState([])
-
-  const getTodoData = async () => {
-    let res = await fetch(
-      "https://notes-json-server-44.herokuapp.com/notes?todo_status=Todo"
-    );
-    let data = await res.json();
-    console.log(data);
-    setTodo(data);
-  };
-
-  const getProgressData = async () => {
-    let res = await fetch(
-      "https://notes-json-server-44.herokuapp.com/notes?todo_status=In Progress"
-    );
-    let data = await res.json();
-    console.log(data);
-    setInProgress(data);
-  };
-
-
-  const getDoneData = async () => {
-    let res = await fetch(
-      "https://notes-json-server-44.herokuapp.com/notes?todo_status=Done"
-    );
-    let data = await res.json();
-    console.log(data);
-    setDone(data);
-  };
-
   React.useEffect(() => {
-    getTodoData();
-    getProgressData();
-    getDoneData()
+    dispatch(getTodoData())
+    dispatch(getInProgress())
+    dispatch(getDoneData())
   }, []);
+
+
+  let todosData = useSelector((state) => state.todoData)
+  console.log(todosData)
+
+  let inProgressData = useSelector((state) => state.inProgressData)
+  console.log(inProgressData)
+
+  let doneData = useSelector((state) => state.doneData)
+  console.log("Done data", doneData)
+
 
   return (
     <>
@@ -83,18 +62,18 @@ export const Summary = () => {
               TODO
             </Box>
             <Box sx={{ overflow:'scroll', height:"600px" }} >
-            {todo.map((item) => {
+            {todosData.map((item) => {
               return (
                 <>
-                  <Box sx={{ border: "1px solid black", margin:"10px", padding: "20px", display:"flex", flexDirection:"column", alignItems:"flex-start" }}>
+                  <Box sx={{ border: "1px solid black", margin:"10px", padding: "20px", display:"flex", flexDirection:"column", alignItems:"flex-start"}}>
                       <h3>{item.title}</h3>
                     <div style={{ display:"flex", justifyContent:"space-between", margin:"10px 0" }} >
-                      <div style={{  padding:"3px 5px", borderRadius:"15px", fontSize: "13px", fontWeight:"bold", backgroundColor:"#99A799", color:"white" }} >{item.todo_cate}</div>
+                      <div style={{  padding:"3px 5px", borderRadius:"15px", fontSize: "13px", fontWeight:"bold", backgroundColor:"#99A799", color:"white" }} >{item.todo_tag}</div>
                       <div>{item.date}</div>
                     </div>
                     <p style={{ margin:'10px 0', textAlign:"left" }} >{item.description}</p>
                     <Box>
-                        <input type="checkbox" name="" id="" /> {item.subtask}
+                    <input type="checkbox" value={item.subtask} />  {item.subtask}
                         
                         </Box>
                   </Box>
@@ -108,17 +87,17 @@ export const Summary = () => {
             <Box sx={{ border: "3px solid black" , bgColor: "#F29191", color: "white", fontWeight:"bold", padding: "10px" }}>
               IN PROGRESS
             </Box>
-            {inProgress.map((item) => {
+            {inProgressData.map((item) => {
               return (
                 <>
                   <Box sx={{ border: "1px solid black", margin:"10px", padding: "20px", display:"flex", flexDirection:"column", alignItems:"flex-start" }}>
                       <h3>{item.title}</h3>
                     <div style={{ display:"flex", justifyContent:"space-between", margin:"10px 0" }} >
-                    <div style={{  padding:"3px 5px", borderRadius:"15px", fontSize: "13px", fontWeight:"bold", backgroundColor:"#94D0CC", color:"white" }} >{item.todo_cate}</div>                      <div>{item.date}</div>
+                    <div style={{  padding:"3px 5px", borderRadius:"15px", fontSize: "13px", fontWeight:"bold", backgroundColor:"#94D0CC", color:"white" }} >{item.todo_tag}</div>                      <div>{item.date}</div>
                     </div>
                     <p style={{ margin:'10px 0', textAlign:"left" }} >{item.description}</p>
                     <Box>
-                        <input type="checkbox" name="" id="" /> {item.subtask}
+                    <input type="checkbox" value={item.subtask} />  {item.subtask}
                         
                         </Box>
                   </Box>
@@ -131,18 +110,18 @@ export const Summary = () => {
             <Box sx={{ border: "3px solid black" , bgColor: "#726A95", color: "white", padding: "10px", fontWeight:"bold" }}>
               DONE
             </Box>
-            {done.map((item) => {
+            {doneData.map((item) => {
               return (
                 <>
                   <Box sx={{ border: "1px solid black", margin:"10px", padding: "20px", display:"flex", flexDirection:"column", alignItems:"flex-start" }}>
                       <h3>{item.title}</h3>
                     <div style={{ display:"flex", justifyContent:"space-between", margin:"10px 0" }} >
-                    <div style={{  padding:"3px 5px", borderRadius:"15px", fontSize: "13px", fontWeight:"bold", backgroundColor:"#709FB0", color:"white" }} >{item.todo_cate}</div>                      
+                    <div style={{  padding:"3px 5px", borderRadius:"15px", fontSize: "13px", fontWeight:"bold", backgroundColor:"#709FB0", color:"white" }} >{item.todo_tag}</div>                      
                     <div>{item.date}</div>
                     </div>
                     <p style={{ margin:'10px 0', textAlign:"left" }} >{item.description}</p>
                     <Box>
-                        <input type="checkbox" name="" id="" /> {item.subtask}
+                        <input type="checkbox" value={item.subtask} />  {item.subtask}
                         
                         </Box>
                   </Box>

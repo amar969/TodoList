@@ -6,15 +6,14 @@ let initialState = {
     description: "", 
     date: "", 
     todo_status: "", 
-    todo_cate: "",
-    subtask: []
+    todo_tag: "",
+    subtask: ""
 }
 
 export const Form = () => {
   
     const [data, setData] = React.useState(initialState)
-    const [task, setTask] = React.useState([])
-    
+
     const handleChange = (e) => {
         let {name, value, type} = e.target 
         value = type === "checked" ? name : value
@@ -23,7 +22,7 @@ export const Form = () => {
 
     
 
-    let {title, description, date, todo_status, todo_cate, subtask} = data
+    let {title, description, date, todo_status, todo_tag, subtask} = data
 
     
 
@@ -55,7 +54,7 @@ export const Form = () => {
     const handleClick = () => {
         console.log(data)
     }
-    
+
     
 return (
     <>
@@ -85,13 +84,10 @@ return (
         {/* CheckBox */}
         <div className='tags_conatiner' >
             <h3>Tags</h3>
-            <div><input type="checkbox" value="Offical" name="todo_cate" onChange={handleChange} /> Offical  </div>
-            <div><input type="checkbox" value="Personal" name="todo_cate" onChange={handleChange}/> Personal </div>
-            <div><input type="checkbox" value="Other" name="todo_cate" onChange={handleChange}/> Other</div>
+            <div><input type="checkbox" value="Offical" name="todo_tag" onChange={handleChange} /> Offical  </div>
+            <div><input type="checkbox" value="Personal" name="todo_tag" onChange={handleChange}/> Personal </div>
+            <div><input type="checkbox" value="Other" name="todo_tag" onChange={handleChange}/> Other</div>
         </div>
-
-           
-            
              
     </form>
    

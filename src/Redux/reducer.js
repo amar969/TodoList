@@ -1,4 +1,4 @@
-import { GET_PROFILE_LOADING, GET_PROFILE_FAILURE, LOGIN, LOGOUT, GET_PROFILE_SUCCESS, IN_PROGRESS, TODO, DONE } from "./actionType"
+import { GET_PROFILE_LOADING, GET_PROFILE_FAILURE, LOGIN, LOGOUT, GET_PROFILE_SUCCESS, IN_PROGRESS, TODO, DONE, TODODATA, INPROGRESSDATA, DONEDATA } from "./actionType"
 
 const initialState = {
     user: "",
@@ -7,7 +7,10 @@ const initialState = {
     isError: false, 
     inProgress: 0, 
     todo: 0, 
-    done: 0
+    done: 0,
+    todoData: [], 
+    inProgressData: [], 
+    doneData: []
 }
 
 export const reducer = (store = initialState, action) => {
@@ -75,6 +78,30 @@ export const reducer = (store = initialState, action) => {
                 isLoading: false, 
                 isError: false, 
                 done: store.done + action.payload
+            }
+        
+        case TODODATA: 
+            return{
+                ...store, 
+                isLoading: false, 
+                isError: false, 
+                todoData:[...action.payload]
+            }
+        
+        case INPROGRESSDATA:
+            return{
+                ...store, 
+                isLoading: false, 
+                isError: false, 
+                inProgressData:[...action.payload]
+            }
+        
+        case DONEDATA: 
+            return{
+                ...store, 
+                isLoading: false, 
+                isError: false, 
+                doneData: [...action.payload]
             }
 
         default:

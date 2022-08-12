@@ -10,7 +10,7 @@ export const Other = () => {
   const getOther = async () => {
     try {
       let res1 = await fetch(
-        "https://notes-json-server-44.herokuapp.com/notes?todo_status=Todo&todo_cate=Other"
+        "https://notes-json-server-44.herokuapp.com/notes?todo_status=Todo&todo_tag=Other"
       );
       let data1 = await res1.json();
       console.log(data1.length);
@@ -21,7 +21,7 @@ export const Other = () => {
 
     try {
       let res2 = await fetch(
-        "https://notes-json-server-44.herokuapp.com/notes?todo_status=In Progress&todo_cate=Other"
+        "https://notes-json-server-44.herokuapp.com/notes?todo_status=In Progress&todo_tag=Other"
       );
       let data2 = await res2.json();
       console.log(data2.length);
@@ -32,7 +32,7 @@ export const Other = () => {
 
     try {
       let res3 = await fetch(
-        "https://notes-json-server-44.herokuapp.com/notes?todo_status=Done&todo_cate=Other"
+        "https://notes-json-server-44.herokuapp.com/notes?todo_status=Done&todo_tag=Other"
       );
       let data3 = await res3.json();
       console.log(data3.length);
@@ -48,7 +48,7 @@ export const Other = () => {
 
   return (
     <>
-      <h1>Other</h1>
+     
       <Box
         sx={{
           display: "flex",
@@ -78,7 +78,8 @@ export const Other = () => {
             fontSize: "25px",
           }}
         >
-          <h3>Summary</h3>
+             <h1 style={{ textAlign: "left", marginBottom:"50px"}} >Other</h1>
+          <h3  >Summary</h3>
           <div
             style={{
               border: "2px solid black",

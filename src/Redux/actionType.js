@@ -6,6 +6,9 @@ export const GET_PROFILE_FAILURE = "GET_PROFILE_FAILURE";
 export const IN_PROGRESS = "IN_PROGRESS";
 export const TODO = "TODO";
 export const DONE = "DONE";
+export const TODODATA = "TODODATA"
+export const INPROGRESSDATA = "INPROGRESSDATA"
+export const DONEDATA = "DONEDATA"
 
 
 

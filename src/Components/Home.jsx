@@ -27,8 +27,6 @@ export const Home = () => {
 
             }} >
                  <h1 style={{ textAlign: "left", marginLeft:"20px"}} >Create a task</h1>
-        
-               
                <CreateTodo /> 
             </Box>
         </Box>

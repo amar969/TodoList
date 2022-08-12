@@ -27,7 +27,7 @@ let [personalTodoCount, setPersonalTodoCount] = React.useState(0);
   const getOther = async () => {
     try {
       let res1 = await fetch(
-        "https://notes-json-server-44.herokuapp.com/notes?todo_status=Todo&todo_cate=Personal"
+        "https://notes-json-server-44.herokuapp.com/notes?todo_status=Todo&todo_tag=Personal"
       );
       let data1 = await res1.json();
       console.log(data1.length);
@@ -38,7 +38,7 @@ let [personalTodoCount, setPersonalTodoCount] = React.useState(0);
 
     try {
       let res2 = await fetch(
-        "https://notes-json-server-44.herokuapp.com/notes?todo_status=In Progress&todo_cate=Personal"
+        "https://notes-json-server-44.herokuapp.com/notes?todo_status=In Progress&todo_tag=Personal"
       );
       let data2 = await res2.json();
       console.log(data2.length);
@@ -49,7 +49,7 @@ let [personalTodoCount, setPersonalTodoCount] = React.useState(0);
 
     try {
       let res3 = await fetch(
-        "https://notes-json-server-44.herokuapp.com/notes?todo_status=Done&todo_cate=Personal"
+        "https://notes-json-server-44.herokuapp.com/notes?todo_status=Done&todo_tag=Personal"
       );
       let data3 = await res3.json();
       console.log(data3.length);
@@ -66,36 +66,36 @@ let [personalTodoCount, setPersonalTodoCount] = React.useState(0);
 
   return (
     <>
-      <h1>Personal</h1>
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
         }}
-      >
+        >
         <Box
           sx={{
-            width: "30%",
-            borderRight: "2px solid black",
-            height: "800px",
-          }}
-        >
+              width: "30%",
+              borderRight: "2px solid black",
+              height: "800px",
+            }}
+            >
           <Sidebar />
         </Box>
 
         <Box
           sx={{
-            width: "70%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            alignItems:"flex-start",
-            marginTop:"50px",
-            marginLeft: "50px",
-            fontSize:"25px"
-          }}
-        >
+              width: "70%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              alignItems:"flex-start",
+              marginTop:"50px",
+              marginLeft: "50px",
+              fontSize:"25px"
+            }}
+            >
+            <h1  style={{ textAlign: "left", marginBottom:"50px"}} >Personal</h1>
         <h3>Summary</h3>
           <div style={{ border:"2px solid black", padding: "10px", borderRadius:"10px", marginTop:"10px" }} >Todo - {personalTodoCount}</div>
 
