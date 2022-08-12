@@ -1,6 +1,6 @@
 # Notes App
 
-Notes App having the login feature. Making all network requets using Redux thunks. 
+Notes App having the login feature. Making all network request using Redux thunks. 
 
 Deployed link - https://resplendent-faloodeh-996dda.netlify.app/
 
