@@ -1,13 +1,13 @@
-import { GET_PROFILE_LOADING, GET_PROFILE_FAILURE, LOGIN, LOGOUT, GET_PROFILE_SUCCESS, IN_PROGRESS, TODO, DONE, TODODATA, INPROGRESSDATA, DONEDATA } from "./actionType"
+import { GET_PROFILE_LOADING, GET_PROFILE_FAILURE, LOGIN, LOGOUT, GET_PROFILE_SUCCESS,   TODODATA, INPROGRESSDATA, DONEDATA, IN_PROGRESS_PERSONAL_COUNT, TODO_PERSONAL_COUNT, DONE_PERSONAL_COUNT } from "./actionType"
 
 const initialState = {
     user: "",
     profile: {},
     isLoading: false, 
     isError: false, 
-    inProgress: 0, 
-    todo: 0, 
-    done: 0,
+    inProgressPersonalCount: 0, 
+    todoPersonalCount: 0, 
+    donePersonalCount: 0,
     todoData: [], 
     inProgressData: [], 
     doneData: []
@@ -56,28 +56,28 @@ export const reducer = (store = initialState, action) => {
                 profile: action.payload
             }
         
-        case IN_PROGRESS: 
+        case IN_PROGRESS_PERSONAL_COUNT: 
             return{
                 ...store,
                 isLoading: false, 
                 isError: false, 
-                inProgress: store.inProgress + action.payload   
+                inProgressPersonalCount: store.inProgressPersonalCount + action.payload   
             }
         
-        case TODO: 
+        case TODO_PERSONAL_COUNT: 
             return{
                 ...store, 
                 isLoading: false, 
                 isError: false, 
-                todo: store.todo + action.payload
+                todoPersonalCount: store.todoPersonalCount + action.payload
             }
         
-        case DONE: 
+        case DONE_PERSONAL_COUNT: 
             return{
                 ...store, 
                 isLoading: false, 
                 isError: false, 
-                done: store.done + action.payload
+                donePersonalCount: store.donePersonalCount + action.payload
             }
         
         case TODODATA: 

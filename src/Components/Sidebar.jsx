@@ -23,8 +23,7 @@ export const Sidebar = () => {
 
   let profile = useSelector((state) => state.profile)
   console.log(profile.data)
- 
-  let sidebarItems = ["All", "Offical", "Personal", "Other"]
+
 
   return (
     <>
